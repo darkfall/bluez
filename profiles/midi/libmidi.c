@@ -340,7 +340,7 @@ size_t midi_read_raw(struct midi_read_parser *parser, const uint8_t *data,
 	size_t i = 0;
 	bool err = false;
 
-	if (parser->timestamp_high == 0)
+	if (parser->timestamp_high == 0 && parser->rstatus == 0)
 		parser->timestamp_high = data[i++] & 0x3F;
 
 	snd_midi_event_reset_encode(parser->midi_ev);
